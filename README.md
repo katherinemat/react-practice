@@ -1,0 +1,16 @@
+Notes:
+- using 'super' in constructor of component allows us to access parent's class constructor. since class components are extended from React.Component, super accesses React.Component class constructor
+- must use getters and setters to alter a component's state
+- class methods are not bound by default. We want component methods to be bound to the instance of the component so that this.functionNameOrPropertyName refers back to the component
+- References or refs give us access to DOM elements. Stateless functional components cannot have refs
+- Deconstructing Assignments unpacks values from objects and arrays into distinct variables. We can then access values as properties of the component itself instead of as nested properties
+- export default means that we are exporting the sole export of a module instead of something more specifically defined. Import statements without curly braces are used to import something that was exported as the default entity of a JavaScript module. Importing with curly braces means that we are pulling a specific object from a large module, containing many exports.
+- considered good practice to declare propTypes for properties inherited from parent component. Limits properties by datatype, much like Typescript
+- When callback function is passed down, child component only needs to call props.function(). doesn't need to send action up, just execute function
+- if the parent component needs to know about the child's state, or if setState AND passing information up to parent component, move state ownership to parent.
+- debugging tips:
+  - use linting (no-undef, react/jsx-no-undef, no-dupe-keys, react/jsx-no-duplicate-props, react/prop-types, react/forbid-prop-types)
+  - automated testing: ui testing is tricky. maybe try sample props to generate json data that represents dom that would be created.
+  - react DevTools. Can tell you what component certain pieces of text belong to. Can also tell you how app is organized. Are data changes being reflected where you want? If you click "trace react updates" you can see why application is slow and what is updating/re-rendering. DevTools will eventually have what VS has, where you can go to definition of a term
+- Using Bootstrap with React is different because we don't just add Bootstrap class to elements. Instead, we import the bootstrap react component at the top of the component we need it in and then declare the Bootstrap component. Styling is different too because it uses bootstrap/react specific attributes. ex: import { Button } from "react-bootstrap"; and <Button bsSize="large"></Button>
+- Best practice in React is to store state in one place (at the single source of truth). Maybe kind of like an Angular service? Have one component store state for other components that way, as few components as possible store state, or values that change. 
